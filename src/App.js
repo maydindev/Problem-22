@@ -1,19 +1,19 @@
 import { useRef,useState } from 'react'
 
 export default function VideoPlayer() {
-  const [isPlaying,setIsPlaying] = useState(false)
+  const [playingDesc,setPlayingDesc] = useState("")
   const ref = useRef(null)
 
   console.log(ref.current)
 
   const handlePlay = () => {
     ref.current.play()
-    setIsPlaying(true)
+    setPlayingDesc("Oynatılıyor")
   }
 
   const handlePause = () => {
     ref.current.pause()
-    setIsPlaying(false)
+    setPlayingDesc("Duraklatıldı")
   }
 
   return (
@@ -27,7 +27,7 @@ export default function VideoPlayer() {
       />
       <div className='flex justify-between'>
         <button onClick={handlePause} className='text-orange-500 font-semibold'>Duraklat</button>
-        <div>{isPlaying ? "Oynatılıyor" : "Duraklatıldı"}</div>
+        <div>{playingDesc}</div>
         <button onClick={handlePlay} className='text-indigo-500 font-semibold'>Oynat</button>
       </div>
     </div>
